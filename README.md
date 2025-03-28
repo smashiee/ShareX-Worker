@@ -1,5 +1,5 @@
 # ShareX-Worker
-ShareX-Worker is a companion file sharing and URL shortening website for [ShareX](https://getsharex.com/) that runs on [CloudFlare Workers](https://www.cloudflare.com/developer-platform/products/workers/). You will need
+ShareX-Worker is a companion file sharing and URL shortening website for [ShareX](https://getsharex.com/) that runs on [CloudFlare Workers](https://www.cloudflare.com/developer-platform/products/workers/).
 
 
 
