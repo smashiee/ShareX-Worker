@@ -1,5 +1,7 @@
 # ShareX-Worker
-ShareX-Worker is a companion file sharing and URL shortening website for [ShareX](https://getsharex.com/) that runs on [CloudFlare Workers](https://www.cloudflare.com/developer-platform/products/workers/).
+ShareX-Worker is a companion file sharing and URL shortening website for [ShareX](https://getsharex.com/) that runs on [CloudFlare Workers](https://www.cloudflare.com/developer-platform/products/workers/). You will need
+
+
 
 ## Features
 - Create & manage shares
@@ -12,10 +14,10 @@ ShareX-Worker is a companion file sharing and URL shortening website for [ShareX
 - Download ShareX custom uploader configs from the dashboard
 
 ## Setup
+- You will need to link a credit card with CloudFlare, however normal usage of this will fall under the free tier.
 - [Fork](https://github.com/aStonePenguin/ShareX-Worker/fork) this repository.
 - Sign up for [CloudFlare](https://www.cloudflare.com/) and setup your domain there if you already haven't.
-	- Navigate to your domain, "Security", "WAF" and finally the "Rate limiting rules" tab.
-		- Click "Create Rule".
+	- Navigate to your domain, "Security", "Security rules", make sure "Show all rule types" is enabled and finally click "Create rule" next to "Rate limiting rules"
 		- Give it a name.
 		- Click "Edit Expression" and paste the following: `(not http.request.uri.path contains "/assets")`.
 		- Set "Requests" to 20 (you can raise this in the future if it's too low).
@@ -106,6 +108,7 @@ Settings that are marked as optional do not need to be changed if you don't want
 
 ## Editing / Contributing
 Edit `wrangler.jsonc` with the settings above.
+C
 
 ### Install
 ```sh
