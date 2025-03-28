@@ -1,0 +1,87 @@
+/*
+	ShareX-Worker settings:
+	https://github.com/aStonePenguin/ShareX-Worker/blob/master/README.md#settings
+
+	For more details on how to configure Wrangler, refer to:
+	https://developers.cloudflare.com/workers/wrangler/configuration/
+*/
+{
+	"routes": [
+		{
+
+			// The domain you'd like to use.
+			// https://github.com/aStonePenguin/ShareX-Worker/blob/master/README.md#custom-domain---required
+			"pattern": "fi1.io", /* CHANGE THIS */
+			"custom_domain": true
+		}
+	],
+
+	"r2_buckets": [
+		{
+			"binding": "R2",
+
+
+			// The CloudFlare R2 bucket name you'd like to use.
+			// https://github.com/aStonePenguin/ShareX-Worker/blob/master/README.md#r2-bucket
+			"bucket_name": "sharex-worker" /* CHANGE THIS */
+		}
+	],
+
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+
+			// The CloudFlare KV ID you'd like to use
+			// https://github.com/aStonePenguin/ShareX-Worker/blob/master/README.md#kv-namespace---required
+			"id": "c9d3219d64cc45aa92a6bf6bdcd2728a" /* CHANGE THIS */
+		}
+	],
+
+	"vars": {
+		// URL to your CloudFlare R2 bucket.
+		//https://github.com/aStonePenguin/ShareX-Worker/blob/master/README.md#r2_url---required
+		"R2_URL": "https://r2.fi1.io", /* CHANGE THIS */
+
+		// How to structure uploaded files in your R2 bucket
+		"R2_FOLDER_FORMAT": "YYYY/MM/DD",
+
+		// How long sessions last for in seconds: Default 2w
+		"SESSION_TTL": 1209600,
+
+		// How long shares last for: Default 2w
+		"SHARE_TTL": 1209600,
+		// Min length for share URLs
+		"SHARE_SLUG_LEN_MIN": 6,
+		// Max lenth for share URLs
+		"SHARE_SLUG_LEN_MAX": 10,
+		// Append a file extension to upload urls
+		"SHARE_SLUG_FILE_EXT": true
+	},
+
+
+	"triggers": {
+		"crons": [
+			// How often to check for expired shares: Default every hour
+			"0 * * * *"
+		]
+	},
+
+
+	// ----  DO NOT EDIT  ----
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "sharex-worker",
+	"workers_dev": false,
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"compatibility_date": "2025-03-11",
+	"main": "server/index.ts",
+	"assets": {
+		"not_found_handling": "single-page-application",
+		"binding": "ASSETS",
+		"directory": "./dist"
+	},
+	"observability": {
+		"enabled": true
+	},
+}
